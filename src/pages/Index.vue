@@ -51,7 +51,6 @@
   span {
     font-size: 80%;
     padding: 0;
-    font-family: 'Nunito', sans-serif;
   }
 
   ul li p:first-child {
@@ -61,6 +60,5 @@
   ul li p {
     margin: 0;
     line-height: 1.5;
-    font-family: 'Nunito', sans-serif;
   }
 </style>
