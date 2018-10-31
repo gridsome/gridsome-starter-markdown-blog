@@ -3,6 +3,7 @@
     <div class="article">
       <h1>{{ $page.blogPost.title }}</h1>
       <span>{{ $page.blogPost.date }}</span>
+      <img :src="$page.blogPost.fields.image"/>
       <div class="content" v-html="$page.blogPost.content" />
     </div>
   </Layout>
@@ -24,7 +25,10 @@ query BlogPost ($path: String!) {
     title
     date (format: "D MMMM, YYYY")
     content
+    fields {
+      image
   }
+}
 }
 </page-query>
 
@@ -39,6 +43,11 @@ query BlogPost ($path: String!) {
 
   .article h1 {
     font-size: 40px;
+  }
+
+  .article img {
+    width: 100%;
+    border-radius: 5px;
   }
 
   .article a {
