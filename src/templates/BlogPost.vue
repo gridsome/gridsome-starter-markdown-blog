@@ -20,16 +20,16 @@ export default {
 </script>
 
 <page-query>
-query BlogPost ($path: String!) {
-  blogPost (path: $path) {
-    title
-    date (format: "D MMMM, YYYY")
-    content
-    fields {
-      image
+  query BlogPost ($path: String!) {
+    blogPost (path: $path) {
+      title
+      date (format: "D MMMM, YYYY")
+      content
+      fields {
+        image
+      }
+    }
   }
-}
-}
 </page-query>
 
 <style>
