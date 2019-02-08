@@ -1,2 +1,6 @@
+*.log
+.cache
+src/.temp
 node_modules
-.temp
+dist
+

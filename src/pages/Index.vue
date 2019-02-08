@@ -6,7 +6,7 @@
           <h2 v-html="node.title"/>
         </router-link>
         <span v-html="node.date"/>
-        <div v-html="node.fields.description"/>
+        <div v-html="node.description"/>
       </li>
     </ul>
   </Layout>
@@ -20,9 +20,7 @@
           _id
           title
           date (format: "D MMMM, YYYY")
-          fields {
-            description
-          }
+          description
           path
         }
       }

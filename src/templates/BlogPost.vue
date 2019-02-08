@@ -3,7 +3,7 @@
     <div class="article">
       <h1>{{ $page.blogPost.title }}</h1>
       <span>{{ $page.blogPost.date }}</span>
-      <img :src="$page.blogPost.fields.image"/>
+      <g-image :src="$page.blogPost.image"/>
       <div class="content" v-html="$page.blogPost.content" />
     </div>
   </Layout>
@@ -25,9 +25,7 @@ export default {
       title
       date (format: "D MMMM, YYYY")
       content
-      fields {
-        image
-      }
+      image
     }
   }
 </page-query>
