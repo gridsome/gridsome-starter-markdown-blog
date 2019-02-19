@@ -2,9 +2,18 @@
   <Layout>
     <div class="article">
       <h1>{{ $page.blogPost.title }}</h1>
+      <span v-if="$page.blogPost.author">
+        Written by
+        <g-link :to="$page.blogPost.author.path">
+          {{ $page.blogPost.author.title }}
+        </g-link>
+      </span>
       <span>{{ $page.blogPost.date }}</span>
       <g-image :src="$page.blogPost.image"/>
       <div class="content" v-html="$page.blogPost.content" />
+      <g-link v-for="category in $page.blogPost.categories" :key="category.id" :to="category.path">
+        {{ category.title }}
+      </g-link>
     </div>
   </Layout>
 </template>
@@ -20,14 +29,23 @@ export default {
 </script>
 
 <page-query>
-  query BlogPost ($path: String!) {
-    blogPost (path: $path) {
+query BlogPost ($id: String!) {
+  blogPost (id: $id) {
+    title
+    date (format: "D MMMM, YYYY")
+    content
+    image
+    author {
       title
-      date (format: "D MMMM, YYYY")
-      content
-      image
+      path
+    }
+    categories {
+      id
+      title
+      path
     }
   }
+}
 </page-query>
 
 <style>

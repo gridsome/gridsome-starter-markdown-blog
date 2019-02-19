@@ -6,9 +6,25 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
+        path: 'authors/*.md',
+        typeName: 'Author',
+        route: '/author/:id'
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
         path: 'blog/*.md',
-        typeName: 'BlogPost',
-        route: '/:slug'
+        typeName: 'Post',
+        route: '/:slug',
+        refs: {
+          author: 'Author',
+          categories: {
+            typeName: 'Category',
+            route: '/category/:slug',
+            create: true
+          }
+        }
       }
     }
   ]
