@@ -1,17 +1,17 @@
 <template>
   <Layout>
     <div class="article">
-      <h1>{{ $page.blogPost.title }}</h1>
-      <span v-if="$page.blogPost.author">
+      <h1>{{ $page.post.title }}</h1>
+      <span v-if="$page.post.author">
         Written by
-        <g-link :to="$page.blogPost.author.path">
-          {{ $page.blogPost.author.title }}
+        <g-link :to="$page.post.author.path">
+          {{ $page.post.author.title }}
         </g-link>
       </span>
-      <span>{{ $page.blogPost.date }}</span>
-      <g-image :src="$page.blogPost.image"/>
-      <div class="content" v-html="$page.blogPost.content" />
-      <g-link v-for="category in $page.blogPost.categories" :key="category.id" :to="category.path">
+      <span>{{ $page.post.date }}</span>
+      <g-image :src="$page.post.image"/>
+      <div class="content" v-html="$page.post.content" />
+      <g-link v-for="category in $page.post.categories" :key="category.id" :to="category.path">
         {{ category.title }}
       </g-link>
     </div>
@@ -22,15 +22,15 @@
 export default {
   metaInfo () {
     return {
-      title: this.$page.blogPost.title
+      title: this.$page.post.title
     }
   }
 }
 </script>
 
 <page-query>
-query BlogPost ($id: String!) {
-  blogPost (id: $id) {
+query Post ($id: String!) {
+  post (id: $id) {
     title
     date (format: "D MMMM, YYYY")
     content
