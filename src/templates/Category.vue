@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <h1>{{ $page.category.title }}</h1>
+    <h1 class="category-title">{{ $page.category.title }}</h1>
     <ul>
       <li v-for="{ node } in $page.category.belongsTo.edges" :key="node.id">
         <router-link :to="node.path">
@@ -43,8 +43,46 @@ query Author ($id: String!) {
 import { Pager } from 'gridsome'
 
 export default {
+  metaInfo () {
+    return {
+      title: this.$page.category.title
+    }
+  },
   components: {
     Pager
   }
 }
 </script>
+
+<style>
+  .category-title {
+    margin-bottom: .8rem; 
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    margin-bottom: 20px;
+  }
+
+  ul li a h2 {
+    margin-bottom: 10px;
+  }
+
+  span {
+    font-size: 80%;
+    padding: 0;
+  }
+
+  ul li p:first-child {
+    margin-top: 3px;
+  }
+
+  ul li p {
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>
