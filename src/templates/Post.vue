@@ -2,16 +2,17 @@
   <Layout>
     <div class="article">
       <h1>{{ $page.post.title }}</h1>
-      <span v-if="$page.post.author">
+      <p class="article-meta">
         Written by
-        <g-link :to="$page.post.author.path">
+        <g-link class="article-meta-author" :to="$page.post.author.path">
           {{ $page.post.author.title }}
         </g-link>
-      </span>
-      <span>{{ $page.post.date }}</span>
-      <g-image :src="$page.post.image"/>
+        on
+        {{ $page.post.date }}
+      </p>
+      <g-image class="article-cover-image" :src="$page.post.image"/>
       <div class="content" v-html="$page.post.content" />
-      <g-link v-for="category in $page.post.categories" :key="category.id" :to="category.path">
+      <g-link class="article-tags" v-for="category in $page.post.categories" :key="category.id" :to="category.path">
         {{ category.title }}
       </g-link>
     </div>
@@ -49,12 +50,20 @@ query Post ($id: String!) {
 </page-query>
 
 <style>
-  /* .header {
-    margin-bottom: 70px;
-  } */
-
   .article {
     margin-top: 15px;
+  }
+
+  .article-meta {
+    font-size: .8rem;
+    padding: .5rem 0 .8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .article-meta-author {
+    margin: 0 .3rem;
   }
 
   .article h1 {
@@ -68,11 +77,10 @@ query Post ($id: String!) {
 
   .article a {
     color: #4dba87;
-    text-decoration: underline;
   }
 
   .article a:hover {
-    text-decoration: none;
+    color: #429e73;
   }
 
   .article span {
@@ -97,5 +105,16 @@ query Post ($id: String!) {
     margin-top: 0;
     margin-bottom: 10px;
     line-height: 1.5;
+  }
+
+  .article .content {
+    margin-bottom: 1rem;
+  }
+
+  .article-tags {
+    padding: .2rem .5rem;
+    background-color: #c2ecd8;
+    border-radius: 20px;
+    margin-right: .5rem;
   }
 </style>
