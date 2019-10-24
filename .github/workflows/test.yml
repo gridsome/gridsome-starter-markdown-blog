@@ -1,0 +1,22 @@
+name: Test build
+
+on:
+  push:	
+    branches-ignore:	
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Installing packages
+        run: npm install
+
+      - name: Build Gridsome site
+        run: |
+          yarn build
+          echo "Gridsome site is successfully build"
